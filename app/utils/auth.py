@@ -1,5 +1,6 @@
 from passlib.context import CryptContext
 from jose import jwt
+import os
 from datetime import datetime, timedelta
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -12,7 +13,8 @@ def verify_password(plain_password, hashed_password):
     plain_password = plain_password[:72]
     return pwd_context.verify(plain_password, hashed_password)
 
-SECRET_KEY = "supersecretkey"
+# SECRET_KEY = "supersecretkey"
+SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
 
 def create_access_token(data: dict):
