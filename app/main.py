@@ -7,7 +7,8 @@ from app.routers.auth_router import router as auth_router
 app = FastAPI()
 
 origins = [
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "https://fast-api-frontend-olive.vercel.app/"
 ]
 
 app.add_middleware(
