@@ -3,18 +3,24 @@ from app.models.user_model import User
 from app.utils.auth import hash_password, verify_password, create_access_token
 
 def create_user(user_data, db):
+    existing_user = db.query(User).filter(User.email == user_data.email).first()
+
+    if existing_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+
     hashed = hash_password(user_data.password)
+
     user = User(
-        name = user_data.name,
-        email = user_data.email,
-        password = hashed
+        name=user_data.name,
+        email=user_data.email,
+        password=hashed
     )
-    
+
     db.add(user)
     db.commit()
     db.refresh(user)
-    return user
 
+    return user
 
 def login_user(user_data, db):
 
