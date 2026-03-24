@@ -18,7 +18,7 @@ import os
 # DATABASE_URL = "postgresql://postgres:Ipucha69@localhost:5432/fastapi_db"
 DATABASE_URL = "postgresql://root:xN8QuOH7RGLuKmfT133cYfMLmKgR5T1n@dpg-d6ufoa6uk2gs739bf580-a.oregon-postgres.render.com/fastapi_db_035q"
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+# DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(DATABASE_URL)
 
